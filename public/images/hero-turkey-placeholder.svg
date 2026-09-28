@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="620" viewBox="0 0 820 620">
+  <defs>
+    <radialGradient id="plate" cx="50%" cy="55%" r="60%">
+      <stop offset="0%" stop-color="#E8B26B"/>
+      <stop offset="60%" stop-color="#C97B3D"/>
+      <stop offset="100%" stop-color="#8B4E24"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="410" cy="420" rx="360" ry="140" fill="#2b1c12" opacity="0.35"/>
+  <ellipse cx="410" cy="360" rx="300" ry="220" fill="url(#plate)"/>
+  <text x="50%" y="52%" text-anchor="middle" font-family="sans-serif" font-size="26" fill="#fff5e6" opacity="0.85">Replace with roast turkey photo</text>
+</svg>

@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    color: #000000;
+    background: #ffffff;
+  }
+}
+
+.hero-stage {
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  margin-inline: auto;
+  aspect-ratio: 1920 / 898;
+  overflow: hidden;
+  background: #2d1914;
+}
+
+.hero-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 898px;
+  transform-origin: top left;
+  transform: scale(calc(100cqw / 1920));
+}
