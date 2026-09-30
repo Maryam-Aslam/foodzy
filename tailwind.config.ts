@@ -24,6 +24,7 @@ const config: Config = {
         quicksand: ["var(--font-quicksand)", "sans-serif"],
         lato: ["var(--font-lato)", "sans-serif"],
         segoe: ["Segoe UI", "system-ui", "sans-serif"],
+        manrope: ["var(--font-manrope)", "sans-serif"],
       },
       maxWidth: {
         container: "1920px",

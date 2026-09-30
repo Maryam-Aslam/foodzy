@@ -13,21 +13,21 @@ import {
 } from "lucide-react";
 
 const COMPANY_LINKS = [
-  "About Us",
-  "Delivery Information",
-  "Privacy Policy",
-  "Terms & Conditions",
-  "contact Us",
-  "Support Center",
+  { label: "About Us", href: "/about" },
+  { label: "Delivery Information", href: "/faq" },
+  { label: "Privacy Policy", href: "/faq" },
+  { label: "Terms & Conditions", href: "/faq" },
+  { label: "contact Us", href: "/about" },
+  { label: "Support Center", href: "/faq" },
 ];
 
 const CATEGORY_LINKS = [
-  "Dairy & Bakery",
-  "Fruits & Vegetable",
-  "Snack & Spice",
-  "Juice & Drinks",
-  "Chicken & Meat",
-  "Fast Food",
+  { label: "Dairy & Bakery", href: "/shop" },
+  { label: "Fruits & Vegetable", href: "/shop-full" },
+  { label: "Snack & Spice", href: "/shop" },
+  { label: "Juice & Drinks", href: "/shop-full" },
+  { label: "Chicken & Meat", href: "/shop" },
+  { label: "Fast Food", href: "/shop-full" },
 ];
 
 const SOCIALS = [
@@ -128,10 +128,10 @@ export default function Footer() {
           <div>
             <h4 className={headingClass}>Company</h4>
             <ul className="mt-5 flex flex-col gap-[18px]">
-              {COMPANY_LINKS.map((label) => (
-                <li key={label}>
-                  <Link href="#" className={linkClass}>
-                    {label}
+              {COMPANY_LINKS.map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className={linkClass}>
+                    {item.label}
                   </Link>
                 </li>
               ))}
@@ -142,10 +142,10 @@ export default function Footer() {
           <div>
             <h4 className={headingClass}>Category</h4>
             <ul className="mt-5 flex flex-col gap-[18px]">
-              {CATEGORY_LINKS.map((label) => (
-                <li key={label}>
-                  <Link href="#" className={linkClass}>
-                    {label}
+              {CATEGORY_LINKS.map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className={linkClass}>
+                    {item.label}
                   </Link>
                 </li>
               ))}

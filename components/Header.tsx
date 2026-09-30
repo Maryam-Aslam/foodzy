@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+
 import {
   Menu,
   X,
@@ -29,18 +30,68 @@ const NAV_LINKS: NavItem[] = [
     children: [
       { label: "Home One", href: "/" },
       { label: "Home Two", href: "/home-two" },
+      { label: "Home Three", href: "/home-three" },
     ],
   },
-  { label: "Category", href: "#", hasChildren: true },
-  { label: "Products", href: "#", hasChildren: true },
-  { label: "Pages", href: "#", hasChildren: true },
-  { label: "Blog", href: "#", hasChildren: true },
-  { label: "Elements", href: "#", hasChildren: true },
+  {
+    label: "Category",
+    href: "/shop",
+    hasChildren: true,
+    children: [
+      { label: "Shop Left Sidebar", href: "/shop" },
+      { label: "Shop Full Width", href: "/shop-full" },
+    ],
+  },
+  {
+    label: "Products",
+    href: "/product",
+    hasChildren: true,
+    children: [
+      { label: "Product Details", href: "/product" },
+      { label: "Shop Products", href: "/shop" },
+    ],
+  },
+  {
+    label: "Pages",
+    href: "/about",
+    hasChildren: true,
+    children: [
+      { label: "About Us", href: "/about" },
+      { label: "Cart", href: "/cart" },
+      { label: "Checkout", href: "/checkout" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Login", href: "/login" },
+      { label: "Register", href: "/register" },
+    ],
+  },
+  {
+    label: "Blog",
+    href: "/blog-full",
+    hasChildren: true,
+    children: [
+      { label: "Blog Full Width", href: "/blog-full" },
+      { label: "Blog Right Sidebar", href: "/blog-right" },
+    ],
+  },
+  {
+    label: "Elements",
+    href: "/faq",
+    hasChildren: true,
+    children: [
+      { label: "FAQ", href: "/faq" },
+      { label: "Cart", href: "/cart" },
+      { label: "Checkout", href: "/checkout" },
+    ],
+  },
 ];
 
 export default function Header() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [homeOpen, setHomeOpen] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+
+  const toggleSubmenu = (label: string) => {
+    setOpenSubmenu((prev) => (prev === label ? null : label));
+  };
 
   return (
     <header className="relative z-30 w-full border-b border-line bg-white">
@@ -56,13 +107,13 @@ export default function Header() {
           >
             {mobileNavOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
-          <button
-            type="button"
-            aria-label="Toggle category menu"
-            className="hidden h-[35px] w-[35px] items-center justify-center rounded-[5px] border border-line text-[#2B2B2D] transition-colors hover:bg-gray-50 lg:flex"
+          <Link
+            href="/shop"
+            aria-label="Shop categories"
+            className="hidden h-[35px] w-[35px] items-center justify-center rounded-[5px] border border-line text-[#2B2B2D] transition-colors hover:bg-gray-50 hover:text-primary lg:flex"
           >
             <Menu size={20} />
-          </button>
+          </Link>
 
           {/* Primary nav */}
           <nav className="hidden lg:block">
@@ -120,22 +171,22 @@ export default function Header() {
                     <>
                       <button
                         type="button"
-                        onClick={() => setHomeOpen((v) => !v)}
+                        onClick={() => toggleSubmenu(item.label)}
                         className="flex w-full items-center justify-between py-3 font-poppins text-sm font-medium text-black"
                       >
                         {item.label}
                         <ChevronDown
                           size={14}
-                          className={homeOpen ? "rotate-180" : ""}
+                          className={openSubmenu === item.label ? "rotate-180 transition-transform" : "transition-transform"}
                         />
                       </button>
-                      {homeOpen && (
+                      {openSubmenu === item.label && (
                         <ul className="mb-3 flex flex-col border-l-2 border-line pl-4">
                           {item.children.map((child) => (
                             <li key={child.label}>
                               <Link
                                 href={child.href}
-                                className="block py-2 font-poppins text-sm font-medium text-black"
+                                className="block py-2 font-poppins text-sm font-medium text-black hover:text-[#F53E32]"
                                 onClick={() => setMobileNavOpen(false)}
                               >
                                 {child.label}
@@ -182,6 +233,8 @@ export default function Header() {
         {/* Search */}
         <form
           role="search"
+          action="/shop"
+          method="GET"
           className="order-3 flex h-[45px] w-full min-w-0 flex-1 overflow-hidden rounded-[5px] border border-primary bg-white lg:order-none lg:max-w-[600px]"
         >
           <input
@@ -216,22 +269,22 @@ export default function Header() {
         {/* Account / Wishlist / Cart */}
         <div className="flex shrink-0 items-center gap-6 xl:gap-8">
           <Link
-            href="#"
-            className="hidden items-center gap-2 font-poppins text-[15px] font-medium tracking-[0.48px] text-black md:flex"
+            href="/login"
+            className="hidden items-center gap-2 font-poppins text-[15px] font-medium tracking-[0.48px] text-black hover:text-[#F53E32] transition-colors md:flex"
           >
             <User size={21} strokeWidth={1.75} />
             Account
           </Link>
           <Link
             href="#"
-            className="hidden items-center gap-2 font-poppins text-[15px] font-medium tracking-[0.48px] text-black md:flex"
+            className="hidden items-center gap-2 font-poppins text-[15px] font-medium tracking-[0.48px] text-black hover:text-[#F53E32] transition-colors md:flex"
           >
             <Heart size={21} strokeWidth={1.75} />
             Wishlist
           </Link>
           <Link
-            href="#"
-            className="flex items-center gap-2 font-poppins text-[15px] font-medium tracking-[0.48px] text-black"
+            href="/cart"
+            className="flex items-center gap-2 font-poppins text-[15px] font-medium tracking-[0.48px] text-black hover:text-[#F53E32] transition-colors"
           >
             <ShoppingCart size={21} strokeWidth={1.75} />
             <span className="hidden md:inline">Cart</span>
