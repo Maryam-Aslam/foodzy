@@ -7,7 +7,7 @@ export type ShopProduct = {
   category: string;
   title: string;
   image: string;
-  rating: number; // 0-5
+  rating: number;
   reviewLabel: string;
   price: string;
   oldPrice: string;
@@ -18,7 +18,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     id: 1,
     category: "Vegetables",
     title: "Fresh organic villa farm lomon",
-    image: "/images/shop/lemons.jpg",
+    image: "/images/a.jpg",
     rating: 4.5,
     reviewLabel: "(4.5)",
     price: "$120.25",
@@ -28,7 +28,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     id: 2,
     category: "Snacks",
     title: "Best snakes with hazel nut pack",
-    image: "/images/shop/hazelnut-mix.jpg",
+    image: "/images/b.jpg",
     rating: 5,
     reviewLabel: "(5.0)",
     price: "$145",
@@ -38,7 +38,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     id: 3,
     category: "Fruits",
     title: "Fresh organic apple 1kg simla",
-    image: "/images/shop/apple-juice.jpg",
+    image: "/images/c.jpg",
     rating: 4.5,
     reviewLabel: "(4.5)",
     price: "$120.25",
@@ -48,7 +48,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     id: 4,
     category: "Fruits",
     title: "Organic fresh watermelon 1kg",
-    image: "/images/shop/watermelon.jpg",
+    image: "/images/cake.jpg",
     rating: 3.2,
     reviewLabel: "(3.2)",
     price: "$50.30",
@@ -58,7 +58,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     id: 5,
     category: "Snacks",
     title: "Sweet crunchy nut mix 250gm pack",
-    image: "/images/shop/crunchy-nut-mix.jpg",
+    image: "/images/carot.jpg",
     rating: 5,
     reviewLabel: "(5.0)",
     price: "$120.25",
@@ -68,7 +68,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     id: 6,
     category: "Snacks",
     title: "Delicious white boiled fresh bread and toast",
-    image: "/images/shop/bread-1.jpg",
+    image: "/images/chery.png",
     rating: 4,
     reviewLabel: "(4.0)",
     price: "$28",
@@ -78,7 +78,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     id: 7,
     category: "Snacks",
     title: "Delicious white boiled fresh bread and toast",
-    image: "/images/shop/bread-2.jpg",
+    image: "/images/chili.png",
     rating: 4,
     reviewLabel: "(4.0)",
     price: "$24",
@@ -88,7 +88,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     id: 8,
     category: "Snacks",
     title: "Delicious white boiled fresh bread and toast",
-    image: "/images/shop/bread-3.jpg",
+    image: "/images/choc.jpg",
     rating: 4,
     reviewLabel: "(4.0)",
     price: "$22",

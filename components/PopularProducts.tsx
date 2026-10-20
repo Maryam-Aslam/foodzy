@@ -96,21 +96,21 @@ export default function PopularProducts() {
   return (
     <section className="relative w-full bg-white pt-0 pb-[60px] lg:pb-[80px] overflow-hidden">
       
-      {/* Side Decorative Watermarks / Vector Illustrations */}
-      <div className="absolute left-[5%] top-[-20px] pointer-events-none opacity-25">
+      {/* Side Decorative Watermarks — hidden on small screens to avoid overflow */}
+      <div className="absolute left-[5%] top-[-20px] pointer-events-none opacity-25 hidden md:block">
         <Image src="/images/leaf.png" alt="Decoration" width={110} height={110} className="object-contain -rotate-45" />
       </div>
-      <div className="absolute right-[-15px] top-[180px] pointer-events-none opacity-25">
+      <div className="absolute right-[-15px] top-[180px] pointer-events-none opacity-25 hidden md:block">
         <Image src="/images/byngn.png" alt="Decoration" width={90} height={90} className="object-contain rotate-12" />
       </div>
-      <div className="absolute left-[-30px] bottom-[100px] pointer-events-none opacity-25">
+      <div className="absolute left-[-30px] bottom-[100px] pointer-events-none opacity-25 hidden md:block">
         <Image src="/images/peach.png" alt="Decoration" width={130} height={130} className="object-contain rotate-45" />
       </div>
 
       <div className="mx-auto w-full max-w-[1320px] px-4">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center">
-          <h2 className="text-[32px] font-bold leading-[38px] tracking-[0.48px] text-[#2B2B2D]">
+          <h2 className="text-[26px] font-bold leading-[38px] tracking-[0.48px] text-[#2B2B2D] sm:text-[32px]">
             Popular Products
           </h2>
           <p className="mt-[10px] max-w-[600px] font-poppins text-[14px] font-normal leading-[22px] tracking-[0.48px] text-[#7A7A7A]">
@@ -120,54 +120,32 @@ export default function PopularProducts() {
         </div>
 
         {/* Main Grid Layout */}
-        <div className="relative mt-[50px] grid grid-cols-1 items-stretch gap-6 lg:grid-cols-[323px_1fr]">
-          
-          {/* Responsive Decorative Carrot Illustration */}
-          <div 
-            className="hidden lg:block absolute z-0 pointer-events-none 
-                       xl:left-[-110px] 2xl:left-[-130px]"
-            style={{
-              top: '120px',
-              left: '-80px',
-              width: '80px',
-              height: '110px',
-              opacity: '1',
-              transform: 'rotate(0deg)',
-            }}
-          >
-            <Image
-              src="/images/stab.png"
-              alt="Decorative Carrot"
-              width={80}
-              height={110}
-              className="object-contain w-full h-full"
-            />
-          </div>
+        <div className="relative mt-[40px] grid grid-cols-1 items-start gap-6 lg:grid-cols-[280px_1fr] xl:grid-cols-[323px_1fr]">
 
           {/* Left Sidebar (Categories + Banner) */}
-          <div className="relative z-10 flex flex-col gap-6 h-full">
-            {/* Category Filter List */}
-            <div className="flex flex-col gap-[8px] rounded-[5px] bg-white">
+          <div className="relative z-10 flex flex-col gap-4">
+            {/* Category Filter — horizontal scroll on mobile */}
+            <div className="flex flex-row gap-2 overflow-x-auto pb-1 lg:flex-col lg:gap-[8px]">
               {CATEGORIES.map((cat) => {
                 const isActive = activeCategory === cat;
                 return (
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`flex h-[49.33px] w-full items-center justify-between rounded-[5px] border border-[#E9E9E9] bg-[#F7F7F8] px-[16px] transition-colors hover:border-[#F53E32] ${
+                    className={`flex shrink-0 h-[42px] lg:h-[49px] min-w-[90px] lg:w-full items-center justify-between rounded-[5px] border border-[#E9E9E9] bg-[#F7F7F8] px-3 lg:px-[16px] transition-colors hover:border-[#F53E32] ${
                       isActive ? "border-[#F53E32]" : ""
                     }`}
                   >
                     <span
-                      className={`font-poppins text-[14px] font-bold tracking-[0.48px] ${
+                      className={`font-poppins text-[13px] lg:text-[14px] font-bold tracking-[0.48px] ${
                         isActive ? "text-[#F53E32]" : "text-[#2B2B2D]"
                       }`}
                     >
                       {cat}
                     </span>
                     <ArrowRight
-                      size={16}
-                      className={`transition-transform ${
+                      size={14}
+                      className={`hidden lg:block transition-transform ${
                         isActive ? "rotate-0 text-[#F53E32]" : "text-[#2B2B2D]"
                       }`}
                     />
@@ -176,14 +154,12 @@ export default function PopularProducts() {
               })}
             </div>
 
-            {/* Promotional Banner Card - Takes remaining height to perfectly match grid */}
-            <div 
-              className="relative overflow-hidden bg-[#1c1c1c] flex-1 w-full"
+            {/* Promotional Banner Card */}
+            <div
+              className="relative overflow-hidden bg-[#1c1c1c] w-full hidden lg:flex"
               style={{
-                minHeight: '625px',
-                borderRadius: '15px',
-                opacity: '1',
-                transform: 'rotate(0deg)',
+                minHeight: "420px",
+                borderRadius: "15px",
               }}
             >
               <Image
@@ -192,23 +168,23 @@ export default function PopularProducts() {
                 fill
                 className="object-cover"
               />
-              {/* Gradient fading from top to bottom so text is readable */}
+              {/* Gradient fading from top to bottom */}
               <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/30 to-transparent" />
 
               {/* Content positioned on the upper side */}
               <div className="absolute inset-x-0 top-10 flex flex-col items-start px-8">
-                <span className="text-[40px] font-normal leading-[48px] text-white">
+                <span className="text-[38px] font-normal leading-[46px] text-white">
                   Juicy
                 </span>
-                <span className="text-[38px] font-black uppercase leading-[46px] text-[#F7E8AA]">
+                <span className="text-[36px] font-black uppercase leading-[44px] text-[#F7E8AA]">
                   Fruits
                 </span>
-                <p className="mt-2 font-poppins text-[16px] font-normal text-white">
+                <p className="mt-2 font-poppins text-[15px] font-normal text-white">
                   100% Natural
                 </p>
                 <Link
                   href="#"
-                  className="mt-5 flex h-[40px] w-[104.28px] items-center justify-center rounded-[5px] bg-[#F53E32] text-[14px] font-bold capitalize text-white transition-transform hover:scale-105"
+                  className="mt-5 flex h-[40px] w-[104px] items-center justify-center rounded-[5px] bg-[#F53E32] text-[14px] font-bold capitalize text-white transition-transform hover:scale-105"
                 >
                   Shop Now
                 </Link>
@@ -217,19 +193,19 @@ export default function PopularProducts() {
           </div>
 
           {/* Right Product Grid */}
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 sm:gap-6">
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
                 className="group relative flex flex-col overflow-hidden rounded-[8px] border border-[#EAEAEA] bg-white transition-shadow hover:shadow-lg"
               >
                 {/* Product Image Container */}
-                <div className="relative h-[240px] w-full bg-[#F7F7F8]">
+                <div className="relative h-[160px] w-full bg-[#F7F7F8] sm:h-[200px] md:h-[240px]">
                   <Image
                     src={product.image}
                     alt={product.title}
                     fill
-                    className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+                    className="object-contain p-3 sm:p-4 transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
 
@@ -237,7 +213,7 @@ export default function PopularProducts() {
                 <div className="relative flex justify-center">
                   <button
                     aria-label="Add to cart"
-                    className="absolute -top-5 flex h-11 w-11 items-center justify-center rounded-full border border-[#EBEBEB] bg-white shadow-sm transition-transform hover:scale-110 hover:shadow-md"
+                    className="absolute -top-5 flex h-10 w-10 items-center justify-center rounded-full border border-[#EBEBEB] bg-white shadow-sm transition-transform hover:scale-110 hover:shadow-md"
                   >
                     <svg
                       width="18"
@@ -259,8 +235,8 @@ export default function PopularProducts() {
                 </div>
 
                 {/* Product Details Area */}
-                <div className="flex flex-col items-center px-4 pt-8 pb-6 text-center">
-                  <span className="font-poppins text-[13px] font-medium text-[#888888]">
+                <div className="flex flex-col items-center px-3 pt-7 pb-4 text-center sm:px-4 sm:pt-8 sm:pb-6">
+                  <span className="font-poppins text-[11px] sm:text-[13px] font-medium text-[#888888]">
                     {product.category}
                   </span>
 
@@ -269,7 +245,7 @@ export default function PopularProducts() {
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        size={14}
+                        size={12}
                         className={
                           i < Math.floor(product.rating)
                             ? "fill-[#F88B58] text-[#F88B58]"
@@ -277,22 +253,22 @@ export default function PopularProducts() {
                         }
                       />
                     ))}
-                    <span className="ml-1 font-poppins text-[12px] text-[#888888]">
+                    <span className="ml-1 font-poppins text-[10px] sm:text-[12px] text-[#888888]">
                       ({product.rating.toFixed(1)})
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h3 className="mt-2 line-clamp-2 min-h-[44px] font-poppins text-[14px] font-semibold text-[#2B2B2D]">
+                  <h3 className="mt-2 line-clamp-2 min-h-[36px] font-poppins text-[12px] sm:text-[14px] font-semibold text-[#2B2B2D]">
                     {product.title}
                   </h3>
 
                   {/* Pricing */}
-                  <div className="mt-2 flex items-center gap-2">
-                    <span className="font-poppins text-[16px] font-bold text-[#F53E32]">
+                  <div className="mt-2 flex items-center gap-1 sm:gap-2">
+                    <span className="font-poppins text-[14px] sm:text-[16px] font-bold text-[#F53E32]">
                       ${product.price.toFixed(2)}
                     </span>
-                    <span className="font-poppins text-[13px] text-[#A0A0A0] line-through">
+                    <span className="font-poppins text-[11px] sm:text-[13px] text-[#A0A0A0] line-through">
                       ${product.oldPrice.toFixed(2)}
                     </span>
                   </div>

@@ -43,7 +43,7 @@ const PRODUCTS: Product[] = [
   },
   {
     id: "3",
-    title: "Angie’s Boomchickapop Sweet & Salty Kettle Corn",
+    title: "Angie's Boomchickapop Sweet & Salty Kettle Corn",
     category: "Snack",
     image: "/images/product-3-1.jpg",
     price: "$48.85",
@@ -131,8 +131,8 @@ export default function PopularProductsSection() {
   const [activeTab, setActiveTab] = useState("All");
 
   // Filter products based on selected tab
-  const filteredProducts = activeTab === "All" 
-    ? PRODUCTS 
+  const filteredProducts = activeTab === "All"
+    ? PRODUCTS
     : PRODUCTS.filter(p => p.category.toLowerCase() === activeTab.toLowerCase());
 
   return (
@@ -140,18 +140,18 @@ export default function PopularProductsSection() {
       <div className="mx-auto w-full max-w-[1610px] px-4">
         
         {/* Section Header with Tabs */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 mb-8">
-          <h3 className="font-['Quicksand'] font-bold text-[32px] leading-[38px] text-[#253D4E]">
+        <div className="flex flex-col gap-4 mb-8">
+          <h3 className="font-['Quicksand'] font-bold text-[24px] leading-[38px] text-[#253D4E] sm:text-[32px]">
             Popular Products
           </h3>
 
-          {/* Category Tabs */}
-          <div className="flex flex-wrap items-center gap-6">
+          {/* Category Tabs — horizontally scrollable on mobile */}
+          <div className="flex flex-nowrap items-center gap-4 overflow-x-auto pb-1 sm:gap-6 sm:flex-wrap">
             {CATEGORIES.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveTab(category)}
-                className={`font-['Quicksand'] font-semibold text-[16px] transition-colors ${
+                className={`font-['Quicksand'] font-semibold text-[13px] sm:text-[16px] shrink-0 transition-colors ${
                   activeTab === category ? "text-[#3BB77E]" : "text-[#253D4E] hover:text-[#3BB77E]"
                 }`}
               >
@@ -161,19 +161,18 @@ export default function PopularProductsSection() {
           </div>
         </div>
 
-        {/* 5-Column Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        {/* Products Grid — fluid columns */}
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 md:gap-5 lg:gap-6">
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="relative flex flex-col justify-between bg-white border border-[#ECECEC] rounded-[15px] p-4 transition-shadow hover:shadow-md"
-              style={{ height: "465.38px" }}
+              className="relative flex flex-col justify-between bg-white border border-[#ECECEC] rounded-[15px] p-3 sm:p-4 transition-shadow hover:shadow-md"
             >
               {/* Product Image & Badge Area */}
-              <div className="relative w-full h-[246px] bg-[#F7F7F8] rounded-[15px] overflow-hidden flex items-center justify-center">
+              <div className="relative w-full bg-[#F7F7F8] rounded-[12px] overflow-hidden flex items-center justify-center" style={{ paddingBottom: "90%" }}>
                 {product.badge && (
                   <span
-                    className={`absolute left-0 top-0 z-10 px-3 py-1 text-[12px] font-['Lato'] text-white rounded-tl-[15px] rounded-br-[20px] ${
+                    className={`absolute left-0 top-0 z-10 px-2 py-1 text-[10px] sm:text-[12px] font-['Lato'] text-white rounded-tl-[12px] rounded-br-[16px] ${
                       product.badge.type === "hot"
                         ? "bg-[#F74B81]"
                         : product.badge.type === "sale"
@@ -190,50 +189,51 @@ export default function PopularProductsSection() {
                   src={product.image}
                   alt={product.title}
                   fill
-                  className="object-contain p-4 transition-transform duration-500 hover:scale-105"
+                  className="object-contain p-2 sm:p-4 transition-transform duration-500 hover:scale-105"
                 />
               </div>
 
               {/* Product Info */}
-              <div className="flex flex-col mt-3">
-                <span className="font-['Lato'] text-[12px] text-[#ADADAD]">
+              <div className="flex flex-col mt-2 sm:mt-3">
+                <span className="font-['Lato'] text-[10px] sm:text-[12px] text-[#ADADAD]">
                   {product.category}
                 </span>
-                <h4 className="mt-1 font-['Poppins'] font-medium text-[15px] leading-[22px] text-[#2B2B2D] tracking-[0.48px] line-clamp-2">
+                <h4 className="mt-1 font-['Poppins'] font-medium text-[12px] sm:text-[14px] leading-[18px] sm:leading-[22px] text-[#2B2B2D] tracking-[0.48px] line-clamp-2 min-h-[36px] sm:min-h-[44px]">
                   {product.title}
                 </h4>
 
                 {/* Rating & Vendor */}
-                <div className="mt-2 flex items-center gap-2">
+                <div className="mt-1 sm:mt-2 flex items-center gap-1 sm:gap-2">
                   <div className="flex items-center text-[#F5885F]">
                     {[...Array(4)].map((_, i) => (
-                      <Star key={i} size={12} className="fill-current" />
+                      <Star key={i} size={10} className="fill-current" />
                     ))}
                   </div>
-                  <span className="font-['Lato'] text-[12px] text-[#B6B6B6]">{product.rating}</span>
+                  <span className="font-['Lato'] text-[10px] sm:text-[12px] text-[#B6B6B6]">{product.rating}</span>
                 </div>
 
-                <span className="mt-1 font-['Lato'] text-[12px] text-[#B6B6B6]">
+                <span className="mt-1 font-['Lato'] text-[10px] sm:text-[12px] text-[#B6B6B6]">
                   By <span className="text-[#3BB77E]">{product.vendor}</span>
                 </span>
               </div>
 
               {/* Price & Add Button */}
-              <div className="mt-4 flex items-center justify-between">
-                <div className="flex items-baseline gap-2">
-                  <span className="font-['Quicksand'] font-bold text-[18px] text-[#3BB77E]">
+              <div className="mt-2 sm:mt-4 flex items-center justify-between gap-1">
+                <div className="flex items-baseline gap-1">
+                  <span className="font-['Quicksand'] font-bold text-[14px] sm:text-[18px] text-[#3BB77E]">
                     {product.price}
                   </span>
-                  <span className="font-['Quicksand'] font-bold text-[14px] text-[#ADADAD] line-through">
+                  <span className="font-['Quicksand'] font-bold text-[10px] sm:text-[14px] text-[#ADADAD] line-through hidden sm:inline">
                     {product.oldPrice}
                   </span>
                 </div>
 
                 <button
-                  className="flex items-center gap-1 bg-[#F53E32] hover:bg-[#e03328] text-white px-3 py-2 rounded-[4px] font-['Lato'] font-bold text-[14px] transition-colors shadow-sm"
+                  className="flex items-center gap-1 bg-[#F53E32] hover:bg-[#e03328] text-white px-2 sm:px-3 py-1.5 sm:py-2 rounded-[4px] font-['Lato'] font-bold text-[11px] sm:text-[14px] transition-colors shadow-sm shrink-0"
                 >
-                  <ShoppingCart size={14} className="text-white" />
-                  Add
+                  <ShoppingCart size={11} className="text-white sm:hidden" />
+                  <ShoppingCart size={14} className="text-white hidden sm:block" />
+                  <span className="hidden sm:inline">Add</span>
                 </button>
               </div>
 

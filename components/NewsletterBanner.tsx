@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Send } from "lucide-react";
+
 const FEATURES = [
   {
     title: "Best prices & offers",
@@ -33,9 +34,9 @@ export default function NewsletterBanner() {
     <section className="w-full bg-white px-4 py-[60px] sm:py-[80px]">
       <div className="mx-auto w-full max-w-[1609px]">
         {/* Banner */}
-        <div className="relative min-h-[417px] w-full overflow-hidden rounded-[20px] bg-[#0F0F0F] bg-[radial-gradient(ellipse_at_0%_0%,rgba(150,133,88,0.65),transparent_55%),linear-gradient(90deg,#6F6242_0%,#2B261B_38%,#0F0F0F_62%)]">
+        <div className="relative w-full overflow-hidden rounded-[20px] bg-[#0F0F0F] bg-[radial-gradient(ellipse_at_0%_0%,rgba(150,133,88,0.65),transparent_55%),linear-gradient(90deg,#6F6242_0%,#2B261B_38%,#0F0F0F_62%)]">
           {/* Product image */}
-          <div className="pointer-events-none absolute bottom-0 right-[20px] hidden h-[345.73px] w-[634.39px] lg:block xl:right-[50px]">
+          <div className="pointer-events-none absolute bottom-0 right-0 hidden h-[280px] w-[480px] lg:block xl:right-[30px] xl:h-[345px] xl:w-[634px]">
             <Image
               src="/images/myimg.png"
               alt="Delivery man holding a box of fresh vegetables"
@@ -45,31 +46,31 @@ export default function NewsletterBanner() {
             />
           </div>
 
-          <div className="relative z-10 px-6 py-12 sm:px-[78px] sm:pb-0 sm:pt-[83px]">
-            <h2 className="max-w-[529px] font-quicksand text-[30px] font-bold leading-[38px] text-white sm:text-[40px] sm:leading-[48px]">
+          <div className="relative z-10 px-5 py-10 sm:px-10 sm:py-14 md:px-[78px]">
+            <h2 className="max-w-[440px] font-quicksand text-[24px] font-bold leading-[34px] text-white sm:max-w-[529px] sm:text-[34px] sm:leading-[44px] md:text-[40px] md:leading-[48px]">
               Stay home &amp; get your daily needs from our shop
             </h2>
 
-            <p className="mt-6 font-lato text-[16px] leading-6 text-[#9C9C9C] sm:mt-[20px] sm:text-[18px]">
-              Start You&apos;r Daily Shopping with{" "}
+            <p className="mt-4 font-lato text-[15px] leading-6 text-[#9C9C9C] sm:mt-[20px] sm:text-[18px]">
+              Start Your Daily Shopping with{" "}
               <span className="text-[#3BB77E]">Nest Mart</span>
             </p>
 
             {/* Email form */}
-            <form className="mt-8 flex h-[64px] w-full max-w-[473px] items-center rounded-[50px] bg-white pr-[23px] sm:mt-[46px]">
+            <form className="mt-6 flex w-full max-w-[473px] items-center overflow-hidden rounded-[50px] bg-white sm:mt-[46px]">
               <Send
                 size={18}
                 strokeWidth={1.5}
-                className="ml-[26px] shrink-0 text-[#8A8A82]"
+                className="ml-4 shrink-0 text-[#8A8A82] sm:ml-[26px]"
               />
               <input
                 type="email"
-                placeholder="Your emaill address"
-                className="ml-[14px] h-full min-w-0 flex-1 bg-transparent font-lato text-[16px] text-[#253D4E] placeholder:text-[#A8A692] focus:outline-none"
+                placeholder="Your email address"
+                className="ml-3 h-[52px] min-w-0 flex-1 bg-transparent font-lato text-[14px] text-[#253D4E] placeholder:text-[#A8A692] focus:outline-none sm:h-[64px] sm:text-[16px]"
               />
               <button
                 type="submit"
-                className="h-full w-[120px] shrink-0 rounded-[50px] bg-[linear-gradient(90deg,#FA7F63_0%,#F66A55_100%)] font-quicksand text-[16px] font-bold tracking-[0.5px] text-white transition-opacity hover:opacity-90 sm:w-[159.73px]"
+                className="m-1 h-[44px] shrink-0 rounded-[50px] bg-[linear-gradient(90deg,#FA7F63_0%,#F66A55_100%)] px-4 font-quicksand text-[13px] font-bold tracking-[0.5px] text-white transition-opacity hover:opacity-90 sm:h-[54px] sm:px-6 sm:text-[15px]"
               >
                 Subscribe
               </button>
@@ -82,9 +83,9 @@ export default function NewsletterBanner() {
           {FEATURES.map((f) => (
             <div
               key={f.title}
-              className="flex h-[107px] items-center gap-5 rounded-[10px] bg-[#F4F6FA] px-5"
+              className="flex items-center gap-4 rounded-[10px] bg-[#F4F6FA] px-4 py-4 sm:gap-5 sm:px-5 sm:py-0 sm:h-[107px]"
             >
-              <div className="relative h-[60px] w-[60px] shrink-0">
+              <div className="relative h-[48px] w-[48px] shrink-0 sm:h-[60px] sm:w-[60px]">
                 <Image
                   src={f.icon}
                   alt=""
@@ -94,10 +95,10 @@ export default function NewsletterBanner() {
                 />
               </div>
               <div className="min-w-0">
-                <h3 className="font-quicksand text-[18px] font-semibold leading-[22px] text-[#242424]">
+                <h3 className="font-quicksand text-[15px] font-semibold leading-[22px] text-[#242424] sm:text-[18px]">
                   {f.title}
                 </h3>
-                <p className="mt-[5px] font-lato text-[16px] leading-6 text-[#ADADAD]">
+                <p className="mt-[3px] font-lato text-[13px] leading-6 text-[#ADADAD] sm:text-[16px]">
                   {f.text}
                 </p>
               </div>

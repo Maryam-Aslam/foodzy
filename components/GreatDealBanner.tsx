@@ -5,39 +5,36 @@ import Image from "next/image";
 export default function DealBanner() {
   return (
     <>
-      {/* Import Google Fonts for exact typography match */}
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
-      `}</style>
-
-      <section className="relative w-full h-[600px] overflow-hidden flex items-center">
+      <section className="relative w-full min-h-[300px] overflow-hidden flex items-center sm:min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
         {/* Background Image */}
         <Image
           src="/images/mainbg.jpg"
           alt="Great deal on organic food"
           fill
-          className="object-cover"
+          className="object-cover object-center"
           priority
         />
 
+        {/* Dark overlay for readability on mobile */}
+        <div className="absolute inset-0 bg-black/30 sm:bg-black/10" />
+
         {/* Main Container */}
-        <div className="mx-auto w-full max-w-[1320px] px-4 relative z-10">
+        <div className="mx-auto w-full max-w-[1320px] px-4 relative z-10 py-10">
           {/* Deal Content Box */}
-          <div 
-            className="relative w-full max-w-[488px] bg-white p-[24px]"
+          <div
+            className="relative w-full max-w-[420px] bg-white/95 backdrop-blur-sm p-5 sm:p-[24px]"
             style={{
               boxShadow: "-3px 3px 8px 5px rgba(0, 0, 0, 0.05)",
               borderRadius: "5px",
             }}
           >
-            
             {/* Discount Badge (35% OFF) */}
             <div className="flex items-baseline gap-[6px]">
-              <span 
+              <span
                 style={{
                   fontFamily: "Consolas, monospace",
                   fontWeight: 700,
-                  fontSize: "26px",
+                  fontSize: "clamp(20px, 4vw, 26px)",
                   lineHeight: "31px",
                   letterSpacing: "0.48px",
                   color: "#F53E32",
@@ -45,7 +42,7 @@ export default function DealBanner() {
               >
                 35%
               </span>
-              <span 
+              <span
                 style={{
                   fontFamily: "Poppins, sans-serif",
                   fontWeight: 400,
@@ -60,13 +57,13 @@ export default function DealBanner() {
             </div>
 
             {/* Heading */}
-            <h4 
+            <h4
               className="mt-[13px]"
               style={{
                 fontFamily: "Arial, sans-serif",
                 fontWeight: 700,
-                fontSize: "28px",
-                lineHeight: "34px",
+                fontSize: "clamp(20px, 4vw, 28px)",
+                lineHeight: "1.25",
                 letterSpacing: "0.48px",
                 color: "#2B2B2D",
               }}
@@ -75,7 +72,7 @@ export default function DealBanner() {
             </h4>
 
             {/* Description */}
-            <p 
+            <p
               className="mt-[8px]"
               style={{
                 fontFamily: "Poppins, sans-serif",
@@ -86,21 +83,21 @@ export default function DealBanner() {
                 color: "#000000",
               }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do maecenas accumsan lacus vel facilisis.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              maecenas accumsan lacus vel facilisis.
             </p>
 
             {/* Countdown Box */}
-            <div 
+            <div
               className="mt-[22px] box-border w-full max-w-[290px] h-[72px] flex items-center justify-around px-2 bg-white"
               style={{
                 border: "1px solid #E9CBBE",
                 borderRadius: "5px",
               }}
             >
-              
               {/* Days */}
               <div className="flex flex-col items-center">
-                <span 
+                <span
                   style={{
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 700,
@@ -112,7 +109,7 @@ export default function DealBanner() {
                 >
                   326
                 </span>
-                <span 
+                <span
                   style={{
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 400,
@@ -130,7 +127,7 @@ export default function DealBanner() {
 
               {/* Hours */}
               <div className="flex flex-col items-center">
-                <span 
+                <span
                   style={{
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 700,
@@ -142,7 +139,7 @@ export default function DealBanner() {
                 >
                   03
                 </span>
-                <span 
+                <span
                   style={{
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 400,
@@ -160,7 +157,7 @@ export default function DealBanner() {
 
               {/* Minutes */}
               <div className="flex flex-col items-center">
-                <span 
+                <span
                   style={{
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 700,
@@ -172,7 +169,7 @@ export default function DealBanner() {
                 >
                   06
                 </span>
-                <span 
+                <span
                   style={{
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 400,
@@ -190,7 +187,7 @@ export default function DealBanner() {
 
               {/* Seconds */}
               <div className="flex flex-col items-center">
-                <span 
+                <span
                   style={{
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 700,
@@ -202,7 +199,7 @@ export default function DealBanner() {
                 >
                   52
                 </span>
-                <span 
+                <span
                   style={{
                     fontFamily: "Poppins, sans-serif",
                     fontWeight: 400,
@@ -215,9 +212,7 @@ export default function DealBanner() {
                   Sec
                 </span>
               </div>
-
             </div>
-
           </div>
         </div>
       </section>

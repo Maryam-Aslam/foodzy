@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   AtSign,
-  ChefHat,
   Facebook,
   Instagram,
   Mail,
@@ -17,7 +16,7 @@ const COMPANY_LINKS = [
   { label: "Delivery Information", href: "/faq" },
   { label: "Privacy Policy", href: "/faq" },
   { label: "Terms & Conditions", href: "/faq" },
-  { label: "contact Us", href: "/about" },
+  { label: "Contact Us", href: "/about" },
   { label: "Support Center", href: "/faq" },
 ];
 
@@ -46,15 +45,15 @@ const GALLERY = [
 ];
 
 const headingClass =
-  "flex h-5 items-center font-[Arial,sans-serif] text-[18px] font-bold leading-[23px] tracking-[0.48px] text-black";
+  "font-[Arial,sans-serif] text-[16px] sm:text-[18px] font-bold leading-[23px] tracking-[0.48px] text-black";
 
 const linkClass =
-  "flex h-5 items-center font-poppins text-[14px] leading-[26px] tracking-[0.48px] text-[#777777] transition-colors hover:text-[#F53E32]";
+  "font-poppins text-[13px] sm:text-[14px] leading-[26px] tracking-[0.48px] text-[#777777] transition-colors hover:text-[#F53E32]";
 
 export default function Footer() {
   return (
-    <footer className="relative w-full  border-t border-[#E9E9E9] bg-[#F7F7F8]">
-      {/* Decorative line-art with tomato positioned higher up */}
+    <footer className="relative w-full border-t border-[#E9E9E9] bg-[#F7F7F8] overflow-hidden">
+      {/* Decorative items — only on xl+ */}
       <Image
         src="/images/tomato.png"
         alt=""
@@ -77,11 +76,12 @@ export default function Footer() {
         className="pointer-events-none absolute bottom-[20px] right-[7%] hidden xl:block"
       />
 
-      <div className="relative mx-auto w-full max-w-[1320px] px-3 pt-[60px] xl:pt-[101px]">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-[440px_220px_220px_416px] xl:gap-0">
+      <div className="relative mx-auto w-full max-w-[1320px] px-4 pt-[50px] sm:px-6 xl:pt-[101px]">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-[1fr_180px_180px_380px] xl:gap-12">
+          
           {/* Column 1: brand + contact */}
-          <div className="max-w-[395px]">
-          <Link href="/" className="flex items-center gap-[10px]">
+          <div className="sm:col-span-2 xl:col-span-1">
+            <Link href="/" className="flex items-center gap-[10px]">
               <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-[14px]">
                 <Image
                   src="/images/logo.png"
@@ -100,25 +100,24 @@ export default function Footer() {
               </span>
             </Link>
 
-            <p className="mt-[18px] font-poppins text-[14px] leading-6 tracking-[0.48px] text-[#7A7A7A]">
+            <p className="mt-[18px] font-poppins text-[13px] sm:text-[14px] leading-6 tracking-[0.48px] text-[#7A7A7A] max-w-[380px]">
               FoodTrove is the biggest market of grocery products. Get your
               daily needs from our store.
             </p>
 
-            <ul className="mt-[30px] flex flex-col gap-[18px] font-poppins text-[14px] tracking-[0.48px] text-[#777777]">
+            <ul className="mt-[24px] flex flex-col gap-[14px] font-poppins text-[13px] sm:text-[14px] tracking-[0.48px] text-[#777777]">
               <li className="flex items-start gap-[10px]">
-                <MapPin size={18} className="mt-[3px] shrink-0 text-[#F53E32]" />
-                <span className="max-w-[350px] leading-[23px]">
-                  51 Green St, Huntington ohaio beach ontario, NY 11746 KY 4783,
-                  USA.
+                <MapPin size={17} className="mt-[3px] shrink-0 text-[#F53E32]" />
+                <span className="max-w-[340px] leading-[23px]">
+                  51 Green St, Huntington ohaio beach ontario, NY 11746 KY 4783, USA.
                 </span>
               </li>
               <li className="flex items-center gap-[10px]">
-                <Mail size={18} className="shrink-0 text-[#F53E32]" />
+                <Mail size={17} className="shrink-0 text-[#F53E32]" />
                 <span className="leading-5">example@email.com</span>
               </li>
               <li className="flex items-center gap-[10px]">
-                <Phone size={18} className="shrink-0 text-[#F53E32]" />
+                <Phone size={17} className="shrink-0 text-[#F53E32]" />
                 <span className="leading-5">+91 123 4567890</span>
               </li>
             </ul>
@@ -127,7 +126,7 @@ export default function Footer() {
           {/* Column 2: Company */}
           <div>
             <h4 className={headingClass}>Company</h4>
-            <ul className="mt-5 flex flex-col gap-[18px]">
+            <ul className="mt-5 flex flex-col gap-[14px] sm:gap-[18px]">
               {COMPANY_LINKS.map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className={linkClass}>
@@ -141,7 +140,7 @@ export default function Footer() {
           {/* Column 3: Category */}
           <div>
             <h4 className={headingClass}>Category</h4>
-            <ul className="mt-5 flex flex-col gap-[18px]">
+            <ul className="mt-5 flex flex-col gap-[14px] sm:gap-[18px]">
               {CATEGORY_LINKS.map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className={linkClass}>
@@ -153,10 +152,10 @@ export default function Footer() {
           </div>
 
           {/* Column 4: Newsletter */}
-          <div className="w-full max-w-[416px]">
+          <div className="sm:col-span-2 xl:col-span-1">
             <h4 className={headingClass}>Subscribe Our Newsletter</h4>
 
-            <form className="relative mt-[17px] h-[44px] w-full">
+            <form className="relative mt-[17px] h-[44px] w-full max-w-[416px]">
               <input
                 type="text"
                 placeholder="Search here..."
@@ -171,7 +170,7 @@ export default function Footer() {
               </button>
             </form>
 
-            <div className="mt-[24px] flex gap-1">
+            <div className="mt-[24px] flex gap-2">
               {SOCIALS.map(({ icon: Icon, label }) => (
                 <Link
                   key={label}
@@ -184,7 +183,7 @@ export default function Footer() {
               ))}
             </div>
 
-            <div className="mt-[24px] grid grid-cols-5 gap-3">
+            <div className="mt-[24px] grid grid-cols-5 gap-2 sm:gap-3 max-w-[300px] sm:max-w-[416px]">
               {GALLERY.map((src, i) => (
                 <div
                   key={i}
@@ -204,9 +203,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-[60px] border-t border-[#E9E9E9] py-[19px] text-center font-poppins text-[14px] leading-[20px] tracking-[0.48px] text-black xl:mt-[111px]">
-          © 2025 <span className="text-[#F53E32]">Foodzy</span>. All rights
-          reserved.
+        <div className="mt-[50px] border-t border-[#E9E9E9] py-[19px] text-center font-poppins text-[13px] sm:text-[14px] leading-[20px] tracking-[0.48px] text-black xl:mt-[80px]">
+          © 2025 <span className="text-[#F53E32]">Foodzy</span>. All rights reserved.
         </div>
       </div>
     </footer>

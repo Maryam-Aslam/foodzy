@@ -88,72 +88,72 @@ export default function DealsOfTheDay() {
     <section className="w-full bg-white px-4 py-[60px]">
       <div className="mx-auto w-full max-w-[1610px] xl:px-3">
         {/* Header */}
-        <div className="flex min-h-[82.39px] items-start justify-between gap-4">
-          <h3 className="-mt-px flex h-10 items-center font-quicksand text-[26px] font-bold leading-[38px] text-[#253D4E] sm:text-[32px]">
+        <div className="flex items-center justify-between gap-4 mb-8">
+          <h3 className="font-quicksand text-[24px] font-bold leading-[38px] text-[#253D4E] sm:text-[32px]">
             Deals Of The Day
           </h3>
           <Link
             href="#"
-            className="mt-[14.39px] flex h-6 items-center gap-1 font-lato text-[16px] leading-6 text-[#7E7E7E] transition-colors hover:text-[#3BB77E]"
+            className="flex items-center gap-1 font-lato text-[14px] sm:text-[16px] leading-6 text-[#7E7E7E] transition-colors hover:text-[#3BB77E] shrink-0"
           >
             All Deals
             <ChevronRight size={14} strokeWidth={1.5} />
           </Link>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        {/* Cards — fluid grid */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {DEALS.map((deal) => (
             <article
               key={deal.id}
-              className="relative h-[462.55px] w-full max-w-[378.5px] rounded-[15px] bg-white"
+              className="flex flex-col overflow-hidden rounded-[15px] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.07)] border border-[#F2F2F2]"
             >
               {/* Image */}
-              <div className="relative h-[335.17px] w-full overflow-hidden rounded-[15px] bg-[#F2F3F4]">
+              <div className="relative h-[220px] w-full overflow-hidden rounded-t-[15px] bg-[#F2F3F4] sm:h-[260px]">
                 <Image
                   src={deal.image}
                   alt={deal.title}
                   fill
-                  sizes="(min-width: 1280px) 378px, 100vw"
+                  sizes="(min-width: 1280px) 378px, (min-width: 640px) 50vw, 100vw"
                   className="object-cover"
                 />
               </div>
 
-              {/* Content box (overlaps image) */}
-              <div className="absolute left-1/2 top-[245.17px] h-[192.38px] w-[calc(100%-53px)] max-w-[325.5px] -translate-x-1/2 rounded-[10px] bg-white px-[30px] pt-[24px] shadow-[5px_5px_15px_rgba(0,0,0,0.05)]">
-                <h4 className="flex h-[39.19px] items-center font-quicksand text-[16px] font-bold leading-[19px] text-[#253D4E]">
-                  <span className="line-clamp-2">{deal.title}</span>
+              {/* Content */}
+              <div className="flex flex-1 flex-col px-5 py-5">
+                <h4 className="font-quicksand text-[15px] font-bold leading-[20px] text-[#253D4E] line-clamp-2 min-h-[40px]">
+                  {deal.title}
                 </h4>
 
-                <div className="mt-[10.19px] flex h-[17px] items-center gap-[7.7px]">
+                <div className="mt-3 flex items-center gap-[7.7px]">
                   <Stars percent={deal.rating} />
-                  <span className="font-lato text-[14px] leading-6 text-[#B6B6B6]">
+                  <span className="font-lato text-[13px] leading-6 text-[#B6B6B6]">
                     {deal.ratingLabel}
                   </span>
                 </div>
 
-                <p className="mt-[7px] flex h-[17px] items-center font-lato text-[14px] leading-6 text-[#B6B6B6]">
+                <p className="mt-1 font-lato text-[13px] leading-6 text-[#B6B6B6]">
                   By&nbsp;
                   <Link href="#" className="text-[#3BB77E] hover:underline">
                     {deal.brand}
                   </Link>
                 </p>
 
-                <div className="mt-[19px] flex h-[36px] items-center justify-between">
+                <div className="mt-4 flex items-center justify-between">
                   <div className="flex items-center gap-[10px]">
-                    <span className="font-quicksand text-[18px] font-bold leading-6 text-[#3BB77E]">
+                    <span className="font-quicksand text-[17px] font-bold leading-6 text-[#3BB77E]">
                       {deal.price}
                     </span>
-                    <span className="font-quicksand text-[14px] font-bold leading-6 text-[#ADADAD] line-through">
+                    <span className="font-quicksand text-[13px] font-bold leading-6 text-[#ADADAD] line-through">
                       {deal.oldPrice}
                     </span>
                   </div>
 
                   <button
                     type="button"
-                    className="flex h-[36px] w-[84.91px] items-center justify-center gap-[5px] rounded-[4px] bg-[#F53E32] font-lato text-[14px] font-bold leading-6 text-white transition-colors hover:bg-[#e0362b]"
+                    className="flex h-[36px] min-w-[80px] items-center justify-center gap-[5px] rounded-[4px] bg-[#F53E32] px-3 font-lato text-[13px] font-bold leading-6 text-white transition-colors hover:bg-[#e0362b]"
                   >
-                    <ShoppingCart size={14} strokeWidth={2} />
+                    <ShoppingCart size={13} strokeWidth={2} />
                     Add
                   </button>
                 </div>

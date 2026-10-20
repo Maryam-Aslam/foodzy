@@ -14,39 +14,31 @@ const PROMO_BANNERS: PromoBanner[] = [
   {
     title: "Everyday Fresh & Clean with Our Products",
     image: "/images/ttone.png",
-    bgClass: "bg-[#F4EFEA]", 
+    bgClass: "bg-[#F4EFEA]",
   },
   {
     title: "Make your Breakfast Healthy and Easy",
     image: "/images/tttwo.png",
-    bgClass: "bg-[#F7EFEF]", 
+    bgClass: "bg-[#F7EFEF]",
   },
   {
     title: "The best Organic Products Online",
     image: "/images/ttthree.png",
-    bgClass: "bg-[#EFEFF4]", 
+    bgClass: "bg-[#EFEFF4]",
   },
 ];
 
 export default function PromoBannersSection() {
   return (
-    <section className="relative w-full py-[60px] bg-white overflow-x-auto">
-      
-      {/* Outer wrapper allowing a wide container so cards stay in one line */}
-      <div className="mx-auto w-full max-w-[1720px] px-4 flex justify-center">
+    <section className="relative w-full py-[60px] bg-white overflow-hidden">
+      <div className="mx-auto w-full max-w-[1720px] px-4">
         
-        {/* Single Line Flex Container */}
-        <div className="flex flex-row items-center gap-6">
+        {/* Responsive grid — 1 col on mobile, 3 cols on lg+ */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           {PROMO_BANNERS.map((banner, index) => (
             <div
               key={index}
-              className={`relative overflow-hidden ${banner.bgClass} flex items-center px-[50px] shadow-sm group`}
-              style={{
-                width: '535.66px',
-                height: '307.38px',
-                borderRadius: '10px',
-                flexShrink: 0,
-              }}
+              className={`relative overflow-hidden ${banner.bgClass} flex items-center rounded-[10px] shadow-sm group min-h-[180px] sm:min-h-[220px] lg:min-h-[260px]`}
             >
               {/* Background Banner Product Image */}
               <div className="absolute inset-0 z-0">
@@ -59,22 +51,21 @@ export default function PromoBannersSection() {
               </div>
 
               {/* Content Overlay */}
-              <div className="relative z-10 flex flex-col items-start max-w-[230px]">
+              <div className="relative z-10 flex flex-col items-start max-w-[55%] p-5 sm:p-8 sm:max-w-[230px]">
                 {/* Heading */}
-                <h4 className="font-['Quicksand'] font-bold text-[24px] leading-[29px] text-[#253D4E]">
+                <h4 className="font-['Quicksand'] font-bold text-[18px] sm:text-[22px] lg:text-[24px] leading-[1.3] text-[#253D4E]">
                   {banner.title}
                 </h4>
 
                 {/* Shop Now Button */}
                 <Link
                   href="#"
-                  className="mt-6 inline-flex items-center justify-center gap-2 h-[31.59px] px-[16px] bg-[#F53E32] hover:bg-[#e03328] transition-colors rounded-[4px] font-['Quicksand'] font-bold text-[12px] leading-[16px] tracking-[0.5px] text-white shadow-sm"
+                  className="mt-4 sm:mt-6 inline-flex items-center justify-center gap-2 h-[30px] px-3 sm:px-[16px] bg-[#F53E32] hover:bg-[#e03328] transition-colors rounded-[4px] font-['Quicksand'] font-bold text-[11px] sm:text-[12px] leading-[16px] tracking-[0.5px] text-white shadow-sm"
                 >
                   Shop Now
-                  <ArrowRight size={14} className="text-white" />
+                  <ArrowRight size={12} className="text-white" />
                 </Link>
               </div>
-
             </div>
           ))}
         </div>

@@ -157,13 +157,13 @@ export default function Header() {
             className="hidden items-center gap-2 font-segoe text-[15px] leading-[22px] text-black sm:flex"
           >
             <Phone size={20} className="text-ink-soft" />
-            <span>+123 ( 456 ) ( 7890 )</span>
+            <span className="hidden md:inline">+123 ( 456 ) ( 7890 )</span>
           </Link>
         </div>
 
         {/* Mobile nav drawer */}
         {mobileNavOpen && (
-          <nav className="absolute left-0 top-full w-full border-b border-line bg-white shadow-lg lg:hidden">
+          <nav className="absolute left-0 top-full w-full border-b border-line bg-white shadow-lg lg:hidden z-50">
             <ul className="flex flex-col divide-y divide-line px-4">
               {NAV_LINKS.map((item) => (
                 <li key={item.label}>
@@ -214,20 +214,20 @@ export default function Header() {
       </div>
 
       {/* ===== Main header: logo / search / account-wishlist-cart ===== */}
-      <div className="mx-auto flex h-auto min-h-[86px] max-w-container flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-8 lg:flex-nowrap lg:gap-8 xl:px-[312px] xl:py-0">
+      <div className="mx-auto flex h-auto min-h-[70px] max-w-container flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-8 sm:py-4 lg:flex-nowrap lg:gap-8 lg:min-h-[86px] xl:px-[312px] xl:py-0">
         {/* Logo */}
-        <Link href="/" className="flex shrink-0 items-center gap-3">
-       <div className="relative h-[86px] w-[200px] shrink-0">
-  <div className="absolute left-[-24px] top-[0.29px] h-[85.42px] w-[85.42px]">
-    <Image src="/images/logo.png" alt="Foodzy Logo" fill className="object-contain" priority />
-  </div>
-  <span className="absolute left-[53.08px] top-[23.21px] flex h-[19.79px] w-[93.75px] items-center font-inter text-[24px] font-black tracking-[0.48px] text-black">
-    Foodzy
-  </span>
-  <span className="absolute left-[47.88px] top-[51.33px] flex h-[9.37px] w-[128.13px] items-center font-inter text-[11.98px] font-semibold text-[#221F1F]">
-    A Treasure of Tastes
-  </span>
-</div>
+        <Link href="/" className="flex shrink-0 items-center gap-2">
+          <div className="relative h-10 w-10 shrink-0 sm:h-12 sm:w-12">
+            <Image src="/images/logo.png" alt="Foodzy Logo" fill className="object-contain" priority />
+          </div>
+          <span className="flex flex-col">
+            <span className="font-inter text-[20px] sm:text-[24px] font-black tracking-[0.48px] text-black leading-tight">
+              Foodzy
+            </span>
+            <span className="font-inter text-[9px] sm:text-[11px] font-semibold text-[#221F1F] leading-tight">
+              A Treasure of Tastes
+            </span>
+          </span>
         </Link>
 
         {/* Search */}
@@ -235,16 +235,16 @@ export default function Header() {
           role="search"
           action="/shop"
           method="GET"
-          className="order-3 flex h-[45px] w-full min-w-0 flex-1 overflow-hidden rounded-[5px] border border-primary bg-white lg:order-none lg:max-w-[600px]"
+          className="order-3 flex h-[42px] w-full min-w-0 flex-1 overflow-hidden rounded-[5px] border border-primary bg-white sm:h-[45px] lg:order-none lg:max-w-[600px]"
         >
           <input
             type="text"
             placeholder="Search For items..."
-            className="min-w-0 flex-1 bg-transparent px-4 font-poppins text-[13px] leading-5 text-ink-muted placeholder:text-ink-muted focus:outline-none"
+            className="min-w-0 flex-1 bg-transparent px-3 sm:px-4 font-poppins text-[13px] leading-5 text-ink-muted placeholder:text-ink-muted focus:outline-none"
           />
-          <label className="relative hidden shrink-0 items-center border-l border-primary px-4 font-segoe text-[13px] leading-5 text-ink-soft sm:flex">
+          <label className="relative hidden shrink-0 items-center border-l border-primary px-3 font-segoe text-[13px] leading-5 text-ink-soft sm:flex">
             <select
-              className="appearance-none bg-transparent pr-5 focus:outline-none"
+              className="appearance-none bg-transparent pr-5 focus:outline-none text-[13px]"
               defaultValue="all"
             >
               <option value="all">All Categories</option>
@@ -254,40 +254,40 @@ export default function Header() {
             </select>
             <ChevronDown
               size={12}
-              className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2"
+              className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2"
             />
           </label>
           <button
             type="submit"
             aria-label="Search"
-            className="flex w-[45px] shrink-0 items-center justify-center rounded-r-[5px] bg-primary-dark text-white transition-opacity hover:opacity-90"
+            className="flex w-[40px] sm:w-[45px] shrink-0 items-center justify-center rounded-r-[5px] bg-primary-dark text-white transition-opacity hover:opacity-90"
           >
             <Search size={16} />
           </button>
         </form>
 
         {/* Account / Wishlist / Cart */}
-        <div className="flex shrink-0 items-center gap-6 xl:gap-8">
+        <div className="flex shrink-0 items-center gap-4 xl:gap-8">
           <Link
             href="/login"
-            className="hidden items-center gap-2 font-poppins text-[15px] font-medium tracking-[0.48px] text-black hover:text-[#F53E32] transition-colors md:flex"
+            className="hidden items-center gap-2 font-poppins text-[14px] font-medium tracking-[0.48px] text-black hover:text-[#F53E32] transition-colors md:flex"
           >
-            <User size={21} strokeWidth={1.75} />
-            Account
+            <User size={20} strokeWidth={1.75} />
+            <span className="hidden lg:inline">Account</span>
           </Link>
           <Link
             href="#"
-            className="hidden items-center gap-2 font-poppins text-[15px] font-medium tracking-[0.48px] text-black hover:text-[#F53E32] transition-colors md:flex"
+            className="hidden items-center gap-2 font-poppins text-[14px] font-medium tracking-[0.48px] text-black hover:text-[#F53E32] transition-colors md:flex"
           >
-            <Heart size={21} strokeWidth={1.75} />
-            Wishlist
+            <Heart size={20} strokeWidth={1.75} />
+            <span className="hidden lg:inline">Wishlist</span>
           </Link>
           <Link
             href="/cart"
-            className="flex items-center gap-2 font-poppins text-[15px] font-medium tracking-[0.48px] text-black hover:text-[#F53E32] transition-colors"
+            className="flex items-center gap-2 font-poppins text-[14px] font-medium tracking-[0.48px] text-black hover:text-[#F53E32] transition-colors"
           >
-            <ShoppingCart size={21} strokeWidth={1.75} />
-            <span className="hidden md:inline">Cart</span>
+            <ShoppingCart size={20} strokeWidth={1.75} />
+            <span className="hidden sm:inline">Cart</span>
           </Link>
         </div>
       </div>
