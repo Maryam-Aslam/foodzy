@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ChevronRight, Star, ShoppingCart, Heart, LayoutGrid, List, SlidersHorizontal } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+
 export type ShopProduct = {
   id: number;
   category: string;
@@ -17,7 +18,7 @@ export type ShopProduct = {
   oldPrice: string;
 };
 
-export const SHOP_PRODUCTS: ShopProduct[] = [
+ const SHOP_PRODUCTS: ShopProduct[] = [
   {
     id: 1,
     category: "Vegetables",
